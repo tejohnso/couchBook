@@ -1,4 +1,4 @@
 This web application serves to evaluate couchDB as a standalone web platform.  
 
-The html, js, and css files are all hosted and served to clients by the database.
+The html, js, and css files are all hosted and served to web clients by the database.
 
