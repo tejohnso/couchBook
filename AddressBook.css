@@ -1,0 +1,78 @@
+body {	
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		margin: 1em;}
+
+div.resultFrame {
+		width: 50%;
+		padding: 0.5em;
+		border: solid;
+		border-width: 3px;
+		border-radius: 0.5em;
+		text-align: center;
+		background-color: #AAAAAA;
+		margin: auto;}
+
+div.resultHeading {
+		margin-bottom: 0.2em;
+		font-family: tahoma, geneva, sans-serif;
+		font-weight: bold;
+		color: #000000;
+		background-color: #DDDDDD;}
+
+div.resultContainer {
+		height: 8em;
+		overflow: auto;
+		text-align: left;
+		margin-bottom:1em;}
+
+table.resultTable {
+		border-collapse: collapse;
+		width: 100%;
+		background-color: #FFFFFF;
+		cursor: pointer;
+		margin: 0;
+		padding: 0;}
+
+table.resultTable tr:nth-child(even) { 
+		background-color: #F8F8F8;}
+
+table.resultTable tr:hover {
+		background-color: #CCCCCC;}
+
+div.detailFrame {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+		margin: 0.5em;
+		border-style: solid;
+		border-width: 3px;
+		border-radius: 0.5em;
+		display: inline-table;}		
+
+div.detailFrame p span:first-child{
+		padding-right:0.5em;
+		margin-right:0.5em;
+		border-right:3px solid;
+		font-weight:bold;}
+
+div.detailFrame p span{
+		cursor: pointer;}
+
+div.detailFrame p span:first-child{
+		padding-right:0.5em;
+		margin-right:0.5em;
+		border-right:3px solid;
+		font-weight:bold;
+		cursor:default;}
+
+button.detailButton {
+		border-radius: 0.5em;
+		text-align: center;
+		font-weight: bold;
+		margin-bottom:0.5em;
+		width: 100%;
+}
+
+
+
