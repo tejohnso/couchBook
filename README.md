@@ -4,7 +4,6 @@ This web application serves to evaluate couchDB both as a datastore and as a sta
 
 A live test can be found at http://tejohnso.iriscouch.com/addressbook/_design/main/AddressBook.html
 
-The html, js, and css files can all hosted and served to web clients by the database.
 
 ###Features:
 HTML5 with AJAX for dynamic data updates to the database.
