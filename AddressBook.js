@@ -55,19 +55,34 @@ window.document.getElementById('people').addEventListener('click',showRowDetail,
 function showRowDetail(e) {
 	if (e.target.tagName=='TH') {return;}
 
-	var targetRow=e.target;
 	var fullRowData={};
 	var detailParagraph,detailKey,detailValue;
-	var newWindow=document.createElement('div');
 	
-	newWindow.className='detailFrame';
-
+	var targetRow=e.target;	
 	if (targetRow.tagName=='TD') {targetRow=targetRow.parentNode;}
-
-	fullRowData=getFullRowData('people',targetRow.firstElementChild.innerHTML);
+	
+	var newWindow=document.createElement('div');
+	newWindow.className='detailFrame';
 	newWindow.id=targetRow.firstElementChild.innerHTML;
 
+	fullRowData=getFullRowData('people',targetRow.firstElementChild.innerHTML);
+
 	for (key in fullRowData) {
+		appendDetailRow(key);
+	}
+
+	addDetailButtons();
+
+	window.document.body.appendChild(newWindow);
+
+	function getFullRowData(tableName,key) {
+		var req=new XMLHttpRequest();
+		req.open("GET", "/"+tableName+"/"+key,false);
+		req.send("");
+		return JSON.parse(req.responseText);
+	}
+
+	function appendDetailRow(key){
 		detailParagraph=document.createElement('p');
 		detailKey=document.createElement('span');
 		detailValue=document.createElement('span');
@@ -79,25 +94,18 @@ function showRowDetail(e) {
 		newWindow.appendChild(detailParagraph);
 	}
 
-	var deleteButton=document.createElement('button');
-	deleteButton.className='detailButton';
-	deleteButton.innerHTML='delete';
-//	deleteButton.id=fullRowData['_id'];
-	deleteButton.onclick=function(){deleteRecord('people',this.parentElement.id);this.parentElement.parentElement.removeChild(this.parentElement);}
-	newWindow.appendChild(deleteButton);
-	var closeButton=document.createElement('button');
-	closeButton.className='detailButton';
-	closeButton.innerHTML='close';
-	closeButton.onclick=function(){this.parentElement.parentElement.removeChild(this.parentElement);}
-	newWindow.appendChild(closeButton);
-
-	window.document.body.appendChild(newWindow);
-
-	function getFullRowData(tableName,key) {
-		var req=new XMLHttpRequest();
-		req.open("GET", "/"+tableName+"/"+key,false);
-		req.send("");
-		return JSON.parse(req.responseText);
+	function addDetailButtons(){
+		var deleteButton=document.createElement('button');
+		deleteButton.className='detailButton';
+		deleteButton.innerHTML='delete';
+	//	deleteButton.id=fullRowData['_id'];
+		deleteButton.onclick=function(){deleteRecord('people',this.parentElement.id);this.parentElement.parentElement.removeChild(this.parentElement);}
+		newWindow.appendChild(deleteButton);
+		var closeButton=document.createElement('button');
+		closeButton.className='detailButton';
+		closeButton.innerHTML='close';
+		closeButton.onclick=function(){this.parentElement.parentElement.removeChild(this.parentElement);}
+		newWindow.appendChild(closeButton);
 	}
 }
 
