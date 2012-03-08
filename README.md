@@ -1,6 +1,6 @@
 #CouchBook
 
-This web application serves to evaluate couchDB both as a datastore and as a standalone web platform.
+This web application serves to evaluate CouchDB both as a datastore and as a standalone web platform.
 
 A live test can be found at http://tejohnso.iriscouch.com/addressbook/_design/main/AddressBook.html
 
@@ -16,7 +16,7 @@ storing everything directly in design documents, along with views and "show"s al
 
 contentEditable could be used rather than changing the field tags when clicking on a document value.
 
-Websockets could be used instead of AJAX but this isn't directly supported in couchDB and a third layer is
+Websockets could be used instead of AJAX but this isn't directly supported in CouchDB and a third layer is
 out of scope here.  
 
 ###Issues:
