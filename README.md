@@ -22,4 +22,4 @@ out of scope here.
 
 ###Issues:
 CouchDB currently doesn't support server sent events (EventSource) in the _changes api but this application
-does contain code expecting that.  It is as yet untested.  
+does contain code supporting that option should it arrive at some point.  

@@ -162,6 +162,8 @@ function saveEdit(event) {
 	event.stopPropagation();
 }	
 
+/*  To be continued when _changes supports eventsource
+
 function startServerListener() {
 	debugger;
 	var svrListener = new EventSource("/people/_changes?feed=continuous&include_docs=true&heartbeat=10000");
@@ -178,3 +180,4 @@ function handleServerUpdate(e){
 	msgContainer.id='serverMessages';
 	msgContainer.innerHTML=msgContainer.innerHTML+e.data;
 }
+*/
