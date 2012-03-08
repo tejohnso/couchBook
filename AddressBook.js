@@ -1,27 +1,22 @@
-function fetchData(tableName){
+'use strict';
+function fetchData(tableName) {
 	var req=new XMLHttpRequest();
-	var docs;
 	req.open("GET", "/"+tableName+"/_all_docs?include_docs=true&descending=true",false);
 	req.send("");
 	return JSON.parse(req.responseText).rows;
 }
 
-function populateTable(tableElement,columnNames,includeHeader){
-	var newRow;
-	var newColumn;
-	var newColumnText;
-	var dataTuple={};
-	var dataCurrentRow=0;
-	var dataSet=fetchData('people');
-	var dataLength=dataSet.length;
+function populateTable(tableElement,columnNames,includeHeader) {
+	var newRow,newColumn,newColumnText;
+	var dataTuple={},dataSet=fetchData('people'),dataLength=dataSet.length,dataCurrentIndex;
+	var colCount=columnNames.length,j=0;
 
 	while (tableElement.firstChild) {
-  		tableElement.removeChild(tableElement.firstChild);
+		tableElement.removeChild(tableElement.firstChild);
 	}
 
 	if(includeHeader){
-		var colCount=columnNames.length;
-		for (var j=0;j<colCount;j+=1) {
+		for (j=0;j<colCount;j+=1) {
 			dataTuple[columnNames[j]]=columnNames[j];
 		}
 		populateRow(dataTuple,'th');
@@ -32,9 +27,9 @@ function populateTable(tableElement,columnNames,includeHeader){
 		populateRow(dataTuple,'td');
 	}
 
-	function populateRow(rowTuple,columnType){
+	function populateRow(rowTuple,columnType) {
 		newRow=window.document.createElement('tr');
-		for (var j=0,k=columnNames.length;j<k;j+=1) {
+		for (j=0;j<colCount;j+=1) {
 			newColumn=window.document.createElement(columnType);
 			newColumnText=window.document.createTextNode(rowTuple[columnNames[j]]);
 			newColumn.appendChild(newColumnText);
@@ -67,6 +62,7 @@ function showRowDetail(e) {
 
 	fullRowData=getFullRowData('people',targetRow.firstElementChild.innerHTML);
 
+	var key;
 	for (key in fullRowData) {
 		appendDetailRow(key);
 	}
@@ -82,7 +78,7 @@ function showRowDetail(e) {
 		return JSON.parse(req.responseText);
 	}
 
-	function appendDetailRow(key){
+	function appendDetailRow(key) {
 		detailParagraph=document.createElement('p');
 		detailKey=document.createElement('span');
 		detailValue=document.createElement('span');
@@ -94,7 +90,7 @@ function showRowDetail(e) {
 		newWindow.appendChild(detailParagraph);
 	}
 
-	function addDetailButtons(){
+	function addDetailButtons() {
 		var deleteButton=document.createElement('button');
 		deleteButton.className='detailButton';
 		deleteButton.innerHTML='delete';
